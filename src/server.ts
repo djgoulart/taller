@@ -1,11 +1,11 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
+import bodyParser from 'body-parser';
+import { router } from './routes/tasks.routes';
 
 const app = express();
 
-app.use(express.json());
+app.use(bodyParser.json());
 
-app.get('/', (req: Request, res: Response) => {
-  res.json({message: 'Hello, Express!'});
-});
+app.use('/tasks', router)
 
 export default app;
